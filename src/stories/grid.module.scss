@@ -6,31 +6,31 @@
   grid-template-rows: auto;
 
   @include xs {
-    grid-template-columns: repeat(4, 4.375rem);
+    grid-template-columns: repeat($xs-columns, 4.375rem);
     margin: 1rem;
     grid-gap: 1rem;
   }
 
   @include sm {
-    grid-template-columns: repeat(6, 5rem);
+    grid-template-columns: repeat($sm-columns, 5rem);
     margin: 1.25rem;
     grid-gap: 1rem;
   }
 
   @include md {
-    grid-template-columns: repeat(6, 6.5rem);
+    grid-template-columns: repeat($md-columns, 6.5rem);
     margin: 1.75rem;
     grid-gap: 1.5rem;
   }
 
   @include lg {
-    grid-template-columns: repeat(12, 3.625rem);
+    grid-template-columns: repeat($lg-columns, 3.625rem);
     margin: 2rem;
     grid-gap: 1.5rem;
   }
 
   @include xl {
-    grid-template-columns: repeat(12, 5rem);
+    grid-template-columns: repeat($xl-columns, 5rem);
     margin: 2rem;
     grid-gap: 1.5rem;
   }
@@ -38,48 +38,42 @@
 
 .cell {
   @include xs {
-    grid-column: span 4;
-
-    @for $i from 1 through 2 {
-      &:nth-child(#{$i}) {
-        grid-column: span 2;
+    grid-column: span #{$xs-columns};
+    @for $i from 1 through $xs-columns {
+      &.col-xs-#{$i} {
+        grid-column: span #{$i};
       }
     }
   }
-
   @include sm {
-    grid-column: span 6;
-
-    @for $i from 1 through 3 {
-      &:nth-child(#{$i}) {
-        grid-column: span 2;
-      }
-    }
-    @for $i from 4 through 5 {
-      &:nth-child(#{$i}) {
-        grid-column: span 3;
+    grid-column: span #{$sm-columns};
+    @for $i from 1 through $sm-columns {
+      &.col-sm-#{$i} {
+        grid-column: span #{$i};
       }
     }
   }
-
+  @include md {
+    grid-column: span #{$md-columns};
+    @for $i from 1 through $md-columns {
+      &.col-md-#{$i} {
+        grid-column: span #{$i};
+      }
+    }
+  }
   @include lg {
-    grid-column: span 12;
-
-    @for $i from 1 through 4 {
-      &:nth-child(#{$i}) {
-        grid-column: span 3;
+    grid-column: span #{$lg-columns};
+    @for $i from 1 through $lg-columns {
+      &.col-lg-#{$i} {
+        grid-column: span #{$i};
       }
     }
-
-    @for $i from 5 through 7 {
-      &:nth-child(#{$i}) {
-        grid-column: span 4;
-      }
-    }
-
-    @for $i from 8 through 9 {
-      &:nth-child(#{$i}) {
-        grid-column: span 6;
+  }
+  @include xl {
+    grid-column: span #{$xl-columns};
+    @for $i from 1 through $xl-columns {
+      &.col-xl-#{$i} {
+        grid-column: span #{$i};
       }
     }
   }
